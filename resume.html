@@ -1,0 +1,329 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+   <!-- Normalize CSS for cross-browser consistency -->
+   <link rel="stylesheet" href="css/normalize.css?v=1.0.0&t=1736867776">
+
+    <!-- Basic Meta Tags -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="description" content="Resume of Typhon64 - Cybersecurity researcher.">
+    <meta name="keywords" content="Typhon64, Typhon 64, Tyhon 64, Typhon, typhoon, typh, typho,">
+    <meta name="author" content="Typhon64">
+    <meta name="robots" content="index, follow">
+    
+    <!-- SEO Optimization -->
+    <link rel="canonical" href="https://typhon64.github.io/resume.html">
+    
+    <!-- Cache Control - Force fresh content -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <!-- Security & Extension Protection -->
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; worker-src 'self' blob:;">
+    <meta name="theme-color" content="#8B5CF6">
+    
+    <!-- Open Graph /  Meta Tags -->
+    <meta property="og:type" content="profile">
+    <meta property="og:url" content="https://typhon64.github.io/resume.html">
+    <meta property="og:site_name" content="Typhon64">
+    <meta property="og:title" content="Typhon64 Resume">
+    <meta property="og:description" content="Resume of Typhon64 - Cybersecurity researcher.">
+    <meta property="og:image" content="https://typhon64.github.io/media/pfp.webp">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:url" content="https://typhon64.github.io/resume.html">
+    <meta name="twitter:title" content="Typhon64 Resume">
+    <meta name="twitter:description" content="Resume of Typhon64 - Cybersecurity researcher.">
+    <meta property="twitter:image" content="https://typhon64.github.io/media/pfp.webp">
+    
+    <title>Typhon64</title>
+
+    <!-- Theme Consistency Script -->
+    <script>
+        // Tema tutarlılığını sağla
+        const savedTheme = localStorage.getItem('theme') || 'light';
+        document.documentElement.setAttribute('data-theme', savedTheme);
+        
+        window.addEventListener('load', function() {
+            const themeToggle = document.getElementById('theme-toggle-btn');
+            if (themeToggle) {
+                themeToggle.addEventListener('click', function() {
+                    const currentTheme = document.documentElement.getAttribute('data-theme');
+                    const newTheme = currentTheme === 'light' ? 'dark' : 'light';
+                    document.documentElement.setAttribute('data-theme', newTheme);
+                    localStorage.setItem('theme', newTheme);
+                });
+            }
+        });
+    </script>
+    
+    <!-- Minimal Font Loading - Privacy Optimized -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Privacy-Optimized Font Loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/fontawesome.min.css" media="print" onload="this.media='all'" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/solid.min.css" media="print" onload="this.media='all'" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/brands.min.css" media="print" onload="this.media='all'" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <meta name="theme-color" content="#8B5CF6">
+    <link rel="stylesheet" href="css/resume.css?v=1.0.7&t=1736867776">
+   <link rel="icon" href="media/favicon.webp" type="image/webp">
+    <!-- Privacy-Optimized Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <div id="particles-js"></div>
+
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-right">
+                <a href="./index.html" class="back-btn" title="Back"><i class="fas fa-arrow-left"></i>
+                    <span class="back-btn-text">Back</span>
+                </a>
+                <button id="audio-control" class="audio-control-btn" title="Toggle Music" aria-label="Toggle background music" onclick="toggleAudio()">
+                    <i class="fas fa-play" id="audio-icon" aria-hidden="true"></i>
+                </button>
+                <button id="theme-toggle-btn" class="header-btn" title="Toggle Theme">
+                    <i class="fas fa-moon"></i>
+                    <i class="fas fa-sun" style="display:none;"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="main-content-wrapper">
+        <div class="container">
+            <div class="resume-layout">
+                <aside class="resume-sidebar">
+                    <h3>Navigation</h3>
+                    <nav>
+                        <ul>
+                            <li><a href="#about-me">About Me</a></li>
+                            <li><a href="#skills">Skills</a></li>
+                            <li><a href="#projects">Projects</a></li>
+                            <li><a href="#network">Network</a></li>
+                        </ul>
+                    </nav>
+                </aside>
+                <article class="resume-main-content">
+                    <h1 class="page-title">Resume</h1>
+
+                    <section class="resume-section" id="about-me">
+                        <h2><i class="fas fa-user"></i> <span>About Me</span></h2>
+                        <div class="resume-item">
+                            <p class="objective">np</p>
+                        </div>
+                    </section>
+
+                    <section class="resume-section" id="network">
+                        <h2><i class="fas fa-network-wired"></i> <span>Network</span></h2>
+                        <div class="resume-item">
+                            <h3>Social Media</h3>
+                            <div class="links">
+                                <a href="https://github.com/typhon64" target="_blank" rel="noopener noreferrer" translate="no"><i class="fab fa-github"></i> GitHub</a>
+                                <a href="https://x.com/typhon64" target="_blank" rel="noopener noreferrer" translate="no"><i class="fab fa-twitter"></i> Twitter</a>
+                                <a href="https://tryhackme.com/p/Typhon64" target="_blank" rel="noopener noreferrer" translate="no"><i class="fas fa-hat-wizard"></i> TryHackMe</a>
+                                <a href="https://medium.com/@typhon64" target="_blank" rel="noopener noreferrer" translate="no"><i class="fab fa-medium"></i> Medium</a>
+                            </div>
+                        </div>
+                        <div class="resume-item">
+                            <h3>Communities</h3>
+                            <ul class="skills-list">
+                                <li>...</li>
+                                <li>...</li>
+                            </ul>
+                        </div>
+                    </section>
+
+
+                    <section class="resume-section" id="skills">
+                        <h2><i class="fas fa-cogs"></i> <span>Skills</span></h2>
+                        <div class="resume-item">
+                            <h3>Technical Skills</h3>
+                            <ul class="skills-list">
+                                <li>Network</li>
+                                <li>Security Research</li>
+                                <li>Linux</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="resume-section" id="projects">
+                        <h2><i class="fas fa-project-diagram"></i> <span>Projects</span></h2>
+                        <div class="items-container-flex"> 
+                            <div class="resume-item">
+                                <div class="links">
+                                    <a href="https://github.com/Typhon64?tab=repositories" target="_blank" rel="noopener noreferrer">
+                                        <i class="fab fa-github"></i> <span>View Projects</span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </section>
+                </article>
+            </div>
+        </div>
+    </div>
+
+    <!-- Audio element for background music -->
+    <audio id="background-audio" preload="metadata" loop>
+        <source src="media/hmm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Privacy-Optimized GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="script/resume.js?v=1.0.7&t=1736867776" defer></script>
+
+    <!-- Audio Player Control Script -->
+    <script>
+    let audioPlaying = false;
+    let audioElement = null;
+
+    function toggleAudio() {
+        try {
+            if (!audioElement) {
+                audioElement = document.getElementById('background-audio');
+            }
+            
+            if (!audioElement) {
+                console.log('Audio element not found');
+                return;
+            }
+
+            const audioIcon = document.getElementById('audio-icon');
+
+            if (audioPlaying) {
+                // Pause audio
+                audioElement.pause();
+                audioPlaying = false;
+                if (audioIcon) {
+                    audioIcon.className = 'fas fa-play';
+                }
+                // Store state and current time
+                try {
+                    localStorage.setItem('audioPlaying', 'false');
+                    localStorage.setItem('audioCurrentTime', audioElement.currentTime);
+                } catch (e) {
+                    console.warn('Could not save audio state:', e.message);
+                }
+                console.log('Audio paused at:', audioElement.currentTime);
+            } else {
+                // Play audio
+                audioElement.volume = 0.3;
+                
+                // Resume from saved time if available
+                let savedTime;
+                try {
+                    savedTime = localStorage.getItem('audioCurrentTime');
+                } catch (e) {
+                    console.warn('Could not read audio time:', e.message);
+                    savedTime = null;
+                }
+                if (savedTime && !isNaN(parseFloat(savedTime)) && parseFloat(savedTime) >= 0) {
+                    try {
+                        audioElement.currentTime = Math.min(parseFloat(savedTime), audioElement.duration || 0);
+                        console.log('Resuming from:', savedTime);
+                    } catch (e) {
+                        console.warn('Could not set audio time:', e.message);
+                    }
+                }
+                
+                audioElement.play().then(() => {
+                    audioPlaying = true;
+                    if (audioIcon) {
+                        audioIcon.className = 'fas fa-pause';
+                    }
+                    // Store state
+                    try {
+                        localStorage.setItem('audioPlaying', 'true');
+                    } catch (e) {
+                        console.warn('Could not save audio state:', e.message);
+                    }
+                    console.log('Audio playing');
+                }).catch(error => {
+                    console.log('Audio play failed:', error.message);
+                });
+            }
+        } catch (error) {
+            console.log('Audio control error:', error.message);
+        }
+    }
+
+    // Initialize audio state on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const audio = document.getElementById('background-audio');
+        const audioIcon = document.getElementById('audio-icon');
+        
+        if (audio) {
+            audio.volume = 0.3;
+            
+            // Save current time periodically (throttled)
+            let lastSaveTime = 0;
+            audio.addEventListener('timeupdate', function() {
+                if (audioPlaying && Date.now() - lastSaveTime > 1000) { // Save max every 1 second
+                    try {
+                        localStorage.setItem('audioCurrentTime', audio.currentTime);
+                        lastSaveTime = Date.now();
+                    } catch (e) {
+                        console.warn('Could not save audio time:', e.message);
+                    }
+                }
+            });
+            
+            // Error handling
+            audio.addEventListener('error', function(e) {
+                console.warn('Audio loading error:', e.type);
+                // Fallback: hide audio button if audio fails
+                if (audioIcon) {
+                    const audioBtn = audioIcon.closest('.audio-control-btn');
+                    if (audioBtn) {
+                        audioBtn.style.display = 'none';
+                    }
+                }
+            });
+            
+            // Additional error events
+            audio.addEventListener('abort', function() {
+                console.warn('Audio loading aborted');
+            });
+            
+            audio.addEventListener('stalled', function() {
+                console.warn('Audio loading stalled');
+            });
+            
+            // Check if audio should be playing from previous session
+            let savedState, savedTime;
+            try {
+                savedState = localStorage.getItem('audioPlaying');
+                savedTime = localStorage.getItem('audioCurrentTime');
+            } catch (e) {
+                console.warn('Could not read audio state:', e.message);
+                savedState = null;
+                savedTime = null;
+            }
+            
+            if (savedState === 'true' && audioIcon) {
+                // Don't auto-play, just prepare to resume and set icon
+                if (savedTime && !isNaN(parseFloat(savedTime))) {
+                    audio.currentTime = parseFloat(savedTime);
+                }
+                audioIcon.className = 'fas fa-play'; // Show play icon, user needs to click
+                console.log('Audio ready to resume. Click button to play.');
+            }
+        }
+    });
+    </script>
+
+    <i hidden aria-hidden="true" data-k="VGhlIHNpdGUgd2FzIGNyZWF0ZWQgYnkgVHlwaG9uNjQsIHdobyBvd25zIHRoZSBtYWluIGlkZWEgYW5kIGNvZGU6IGh0dHBzOi8vdHlwaG9uNjQuZ2l0aHViLmlvIGdpdGh1Yi5jb20vdHlwaG9uNjQ="></i>
+</body>
+</html>

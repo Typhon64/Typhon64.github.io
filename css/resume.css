@@ -1,0 +1,692 @@
+        /* Genel sıfırlama ve temel ayarlar */
+        /* k: VGhlIHNpdGUgd2FzIGNyZWF0ZWQgYnkgVHlwaG9uNjQsIHdobyBvd25zIHRoZSBtYWluIGlkZWEgYW5kIGNvZGU6IGh0dHBzOi8vdHlwaG9uNjQuZ2l0aHViLmlvIGdpdGh1Yi5jb20vdHlwaG9uNjQ= */
+        
+        /* Font Display Optimization for SF Mono */
+        @font-face {
+            font-family: 'SF Mono';
+            font-display: swap;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth; 
+        }
+
+        :root {
+            /* Koyu Tema (Typhon64 Inspired) */
+            --bg-primary-dark: #0f172a;
+            --bg-secondary-dark: #1e293b;
+            --card-bg-dark: rgba(15, 23, 42, 0.7);
+            --text-primary-dark: #e2e8f0;
+            --text-secondary-dark: #94a3b8;
+            --accent-dark: #c4b5fd; /* New Purple accent */
+            --accent-glow-dark: rgba(196, 181, 253, 0.4);
+            --highlight-dark: #818cf8; /* New Highlight */
+            --border-dark: rgba(196, 181, 253, 0.2); /* New Border */
+            --resume-item-bg-dark: var(--card-bg-dark);
+            --sidebar-bg-dark: var(--bg-primary-dark);
+            --back-btn-text-dark: var(--text-primary-dark);
+            --link-color-dark: var(--highlight-dark);
+            --link-hover-color-dark: var(--accent-dark);
+            /* Particles.js Renkleri - Koyu Tema */
+            --particle-color-dark: '#c4b5fd';
+            --canvas-bg-dark: var(--bg-primary-dark);
+
+            /* Typhon64 specific additions - Dark */
+            --terminal-bg-dark: rgba(0, 0, 0, 0.95);
+            --button-text-dark: #e2e8f0;
+            --button-bg-dark: rgba(148, 163, 184, 0.2);
+
+            /* Açık Tema (Typhon64 Inspired) */
+            --bg-primary-light: #f5f3ef; /* Cream background */
+            --bg-secondary-light: #e7e0d4;
+            --card-bg-light: rgba(255, 255, 255, 0.85); /* Adjusted for light theme */
+            --text-primary-light: #333333; /* Dark text for light theme */
+            --text-secondary-light: #5c5c5c;
+            --accent-light: #A0522D; /* Mocha accent */
+            --accent-glow-light: rgba(160, 82, 45, 0.3);
+            --highlight-light: #8a6c56; /* Adjusted highlight for mocha */
+            --border-light: rgba(160, 82, 45, 0.3);
+            --resume-item-bg-light: var(--card-bg-light);
+            --sidebar-bg-light: var(--bg-primary-light);
+            --back-btn-text-light: #333333; /* Updated from #ffffff, matches Typhon's --button-text-light */
+            --link-color-light: var(--accent-light);
+            --link-hover-color-light: var(--highlight-light);
+            /* Particles.js Renkleri - Açık Tema */
+            --particle-color-light: '#A0522D';
+            --canvas-bg-light: var(--bg-primary-light); /* Updated */
+
+            /* Typhon64 specific additions - Light */
+            --terminal-bg-light: rgba(231, 224, 212, 0.9);
+            --button-text-light: #333333;
+            --button-bg-light: rgba(0,0,0,0.08);
+
+            /* Geçerli Tema Değişkenleri */
+            --bg-primary: var(--bg-primary-dark);
+            --bg-secondary: var(--bg-secondary-dark);
+            --card-bg: var(--card-bg-dark);
+            --text-primary: var(--text-primary-dark);
+            --text-secondary: var(--text-secondary-dark);
+            --accent: var(--accent-dark);
+            --accent-glow: var(--accent-glow-dark);
+            --highlight: var(--highlight-dark);
+            --border: var(--border-dark);
+            --resume-item-bg: var(--resume-item-bg-dark);
+            --sidebar-bg: var(--sidebar-bg-dark);
+            --back-btn-text: var(--back-btn-text-dark);
+            --link-color: var(--link-color-dark);
+            --link-hover-color: var(--link-hover-color-dark);
+            --particle-color: var(--particle-color-dark);
+            --canvas-bg: var(--canvas-bg-dark);
+            /* Add new variables to current theme mapping */
+            --terminal-bg: var(--terminal-bg-dark);
+            --button-text: var(--button-text-dark);
+            --button-bg: var(--button-bg-dark);
+            /* x-prov: f1bc0d7a6f9213e5a2b9c4d8f0a1e3b7c9d2e4f6a8b0c2d4e6f8a1b2c3d4e5f6 */
+        }
+
+        body.light-theme {
+            --bg-primary: var(--bg-primary-light);
+            --bg-secondary: var(--bg-secondary-light);
+            --card-bg: var(--card-bg-light);
+            --text-primary: var(--text-primary-light);
+            --text-secondary: var(--text-secondary-light);
+            --accent: var(--accent-light);
+            --accent-glow: var(--accent-glow-light);
+            --highlight: var(--highlight-light);
+            --border: var(--border-light);
+            --resume-item-bg: var(--resume-item-bg-light);
+            --sidebar-bg: var(--sidebar-bg-light);
+            --back-btn-text: var(--back-btn-text-light);
+            --link-color: var(--link-color-light);
+            --link-hover-color: var(--link-hover-color-light);
+            --particle-color: var(--particle-color-light);
+            --canvas-bg: var(--canvas-bg-light);
+            /* Add new variables to current theme mapping for light theme */
+            --terminal-bg: var(--terminal-bg-light);
+            --button-text: var(--button-text-light);
+            --button-bg: var(--button-bg-light);
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--canvas-bg); /* Particles.js için ana arka plan */
+            color: var(--text-primary);
+            line-height: 1.7;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+            user-select: text;
+            transition: background-color 0.3s ease, color 0.3s ease; 
+        }
+
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; 
+            display: block; 
+        }
+
+        /* Fallback animated background when particles.js fails */
+        #particles-js.fallback-background {
+            background: 
+                radial-gradient(2px 2px at 20px 30px, var(--accent), transparent),
+                radial-gradient(2px 2px at 40px 70px, var(--highlight), transparent),
+                radial-gradient(1px 1px at 90px 40px, var(--accent), transparent),
+                radial-gradient(1px 1px at 130px 80px, var(--highlight), transparent),
+                radial-gradient(2px 2px at 160px 30px, var(--accent), transparent);
+            background-size: 200px 100px;
+            animation: float 15s ease-in-out infinite;
+            opacity: 0.4;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px); }
+            25% { transform: translateY(-10px) translateX(5px); }
+            50% { transform: translateY(0px) translateX(-5px); }
+            75% { transform: translateY(10px) translateX(3px); }
+        }
+
+        /* Alternative gradient background for CSP-safe mode */
+        body.fallback-mode {
+            background: 
+                linear-gradient(135deg, var(--bg-primary) 0%, var(--bg-secondary) 100%),
+                radial-gradient(circle at 20% 50%, rgba(196, 181, 253, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(129, 140, 248, 0.1) 0%, transparent 50%);
+        }
+
+        /* Audio control button for resume page */
+        .audio-control-btn {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: var(--button-bg);
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            color: var(--text-primary);
+            font-size: 0.9rem;
+        }
+
+        .audio-control-btn:hover {
+            background: var(--accent);
+            color: var(--bg-primary);
+            box-shadow: 0 4px 12px var(--accent-glow);
+            transform: scale(1.1);
+        }
+
+        .container {
+            max-width: 1100px; 
+            margin: 0 auto;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 2; 
+        }
+        
+        .top-left-controls {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            z-index: 1001; 
+        }
+        .back-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background-color: var(--button-bg);
+            color: var(--button-text);
+            border: 1px solid var(--border);
+            border-radius: 20px;
+            height: 44px;
+            padding: 0 20px 0 15px; 
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        .back-btn i { font-size: 1.1em; }
+        .back-btn .back-btn-text { font-size: 0.95em; line-height: 1; }
+        .back-btn:hover {
+            transform: scale(1.05);
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            box-shadow: 0 4px 12px var(--accent-glow);
+            border-color: transparent;
+        }
+
+        .header { 
+            width: 100%;
+            position: relative; 
+            z-index: 1000;
+            padding-top: 1.2rem; 
+            height: 70px; 
+        }
+        .header-inner {
+            display: flex;
+            justify-content: flex-end; 
+            align-items: center;
+            max-width: 1100px; 
+            margin: 0 auto;
+            padding: 0 1.5rem; 
+        }
+        .header-right { 
+            display: flex;
+            align-items: center;
+            gap: 0.75rem; /* Butonlar arası boşluk */
+        }
+
+        /* Genel Buton Stili (Eski #settings-btn ve yeni butonlar için temel) */
+        .header-btn {
+            width: auto; /* İçeriğe göre genişlik */
+            min-width: 40px; /* Minimum genişlik */
+            height: 40px;
+            padding: 0 12px; /* Yatay padding */
+            border-radius: 20px; /* Daha yumuşak kenarlar */
+            background: var(--button-bg);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            color: var(--button-text);
+            font-size: 1rem;
+            border: 1px solid var(--border);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 0.5rem; /* İkon ve metin arası boşluk (dil butonu için) */
+            transition: background 0.2s, box-shadow 0.2s, color 0.2s, border-color 0.2s;
+            cursor: pointer;
+            outline: none;
+            text-decoration: none;
+            letter-spacing: 0.5px;
+        }
+
+        .header-btn:hover, .header-btn:focus {
+            background: var(--accent);
+            color: var(--bg-primary);
+            box-shadow: 0 4px 12px var(--accent-glow);
+            border-color: transparent;
+        }
+
+        /* Tema Butonu İkonları */
+        #theme-toggle-btn .fa-sun {
+            display: none; /* Başlangıçta gizli */
+        }
+
+        body.light-theme #theme-toggle-btn .fa-sun {
+            display: inline-block; /* Açık temada göster */
+        }
+
+        body.light-theme #theme-toggle-btn .fa-moon {
+            display: none; /* Açık temada gizle */
+        }
+
+        .main-content-wrapper { 
+            position: relative;
+            width: 100%;
+            padding: 0 0 4rem; 
+            z-index: 1; 
+        }
+        
+        .resume-layout {
+            display: flex;
+            gap: 2rem;
+            align-items: flex-start; 
+        }
+
+        .resume-sidebar {
+            flex: 0 0 280px;
+            position: sticky;
+            top: 20px; 
+            max-height: calc(100vh - 40px); 
+            overflow-y: auto;
+            background-color: var(--sidebar-bg); 
+            border-radius: 8px; 
+            padding: 1.5rem; 
+            z-index: 3; 
+            transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid var(--border);
+        }
+        .resume-sidebar h3 {
+            font-size: 1.1rem;
+            color: var(--accent);
+            margin-bottom: 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid var(--border);
+        }
+        .resume-sidebar nav ul { list-style: none; padding: 0; }
+        .resume-sidebar nav ul li a {
+            display: block;
+            padding: 0.6rem 0.8rem;
+            margin-bottom: 0.4rem;
+            text-decoration: none;
+            color: var(--text-secondary);
+            border-radius: 6px;
+            transition: background-color 0.2s ease, color 0.2s ease, transform 0.1s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+            cursor: pointer; 
+        }
+        .resume-sidebar nav ul li a:hover {
+            background-color: var(--bg-secondary);
+            color: var(--text-primary);
+            transform: translateX(3px);
+        }
+        .resume-sidebar nav ul li a.active {
+            background-color: var(--accent);
+            color: var(--bg-primary) !important;
+            font-weight: 600;
+            box-shadow: 0 2px 10px var(--accent-glow);
+            border-left: 3px solid var(--highlight);
+            padding-left: calc(0.8rem - 3px);
+        }
+
+        .resume-main-content {
+            flex: 1;
+            min-width: 0; 
+            z-index: 2; 
+        }
+        .resume-main-content .page-title {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--accent);
+            margin-bottom: 2.5rem;
+            text-align: left; 
+            letter-spacing: 1px;
+        }
+        .resume-section {
+            background-color: var(--resume-item-bg);
+            padding: 1.5rem; 
+            margin-bottom: 2rem;
+            border-radius: 12px; 
+            border: 1px solid var(--border);
+            backdrop-filter: blur(8px); 
+            transition: all 0.3s ease;
+            display: none; 
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        .resume-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--accent-glow);
+            border-color: var(--accent);
+        }
+        .resume-section.active-section { 
+            display: block;
+            animation: fadeIn 0.5s ease forwards;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .resume-section h2 {
+            font-size: 1.7rem;
+            color: var(--accent);
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.8rem;
+            border-bottom: 1px solid var(--accent);
+            display: flex;
+            align-items: center;
+            letter-spacing: 0.5px;
+        }
+        .resume-section h2 i { margin-right: 0.8rem; font-size: 1.5rem; color: var(--highlight); }
+
+        .resume-item { 
+            margin-bottom: 1.5rem; 
+            background-color: var(--card-bg);
+            padding: 1.2rem;
+            border-radius: 8px;
+            border: 1px solid var(--border);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .resume-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px var(--accent-glow);
+        }
+        .resume-item:last-child { margin-bottom: 0; }
+        .resume-item h3 { font-size: 1.2rem; color: var(--text-primary); margin-bottom: 0.3rem; }
+        .resume-item .subheading { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 0.5rem; font-weight: 500; }
+        .resume-item .date { font-size: 0.9rem; color: var(--accent); margin-bottom: 0.5rem; font-style: italic; }
+        .resume-item p, .resume-item ul { font-size: 0.95rem; color: var(--text-secondary); line-height: 1.6; }
+        .resume-item ul { list-style-position: outside; padding-left: 20px; }
+        .resume-item ul li { margin-bottom: 0.3rem; }
+        .resume-item .technologies { margin-top: 0.5rem; margin-bottom: 0.5rem; }
+        .resume-item .technologies strong { font-weight: 600; color: var(--text-primary); }
+        .resume-item .links { margin-top: 0.8rem; display: flex; flex-wrap: wrap; gap: 1rem; }
+        .resume-item .links a {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--link-color);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.3rem 0.6rem;
+            border: 1px solid var(--border);
+            border-radius: 4px;
+            transition: color 0.2s, background-color 0.2s, border-color 0.2s;
+        }
+        .resume-item .links a:hover {
+            color: var(--accent);
+        }
+        .resume-item .links a i { margin-right: 0.3rem; }
+
+        .resume-section .items-container-flex { display: flex; flex-wrap: wrap; gap: 1.5rem;  }
+        .items-container-flex > .resume-item { flex: 1 1 300px; margin-bottom: 0;  }
+
+        .skills-list { list-style: none; padding-left: 0; display: flex; flex-wrap: wrap; gap: 0.8rem; }
+        .skills-list li { 
+            background-color: var(--card-bg);
+            color: var(--text-secondary);
+            padding: 0.5rem 1rem;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            border: 1px solid var(--border);
+            transition: background-color 0.2s, color 0.2s, transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+        .skills-list li:hover { 
+            background-color: var(--accent);
+            color: var(--bg-primary);
+            border-color: var(--accent);
+            transform: translateY(-2px);
+            box-shadow: 0 3px 8px var(--accent-glow);
+        }
+
+        @media screen and (max-width: 900px) {
+            .resume-layout { flex-direction: column; gap: 1.5rem; }
+            .resume-sidebar { 
+                position: static; 
+                max-height: none; 
+                width: 100%; 
+                overflow-y: visible; 
+                padding-right: 0; 
+                border-right: none; 
+                border-bottom: 1px solid var(--border); 
+                padding-bottom: 1rem; 
+                margin-bottom: 1.5rem; 
+            }
+            .resume-sidebar nav ul { 
+                display: flex; 
+                flex-wrap: wrap; 
+                gap: 0.5rem; /* Butonlar arası boşluk */
+                justify-content: center; /* Mobil görünümde ortala */
+            }
+            .resume-sidebar nav ul li { /* Liste öğeleri için ek stil */
+                flex-grow: 1; /* Küçük ekranlarda eşit genişlik */
+                flex-basis: auto; /* Taban genişliğini otomatik yap */
+                min-width: 120px; /* Minimum buton genişliği */
+            }
+            .resume-sidebar nav ul li a { 
+                padding: 0.6rem 1rem; /* Mobil buton paddingi */
+                font-size: 0.9rem; /* Mobil buton font boyutu */
+                text-align: center;
+                display: block; /* Tam alanı kaplaması için */
+                width: 100%; /* Üst öğenin genişliğini al */
+            }
+            .resume-main-content .page-title { margin-bottom: 1.5rem; }
+            .resume-section {
+                padding: 1.5rem;
+            }
+        }
+        @media screen and (max-width: 768px) {
+            .header-inner { padding: 0 1rem; }
+            .resume-main-content .page-title { font-size: 2rem; }
+            .resume-section h2 { font-size: 1.4rem;}
+            .resume-item h3 { font-size: 1.1rem;}
+            .items-container-flex > .resume-item { flex-basis: calc(50% - 0.75rem);  }
+            .resume-item {
+                padding: 1.2rem;
+            }
+        }
+        @media screen and (max-width: 600px) { 
+            .items-container-flex > .resume-item { flex-basis: 100%;  }
+            .resume-sidebar nav ul { 
+                gap: 0.3rem; /* Daha küçük gap */
+            }
+             .resume-sidebar nav ul li { /* Liste öğeleri için ek stil */
+                min-width: unset; /* Minimum genişliği kaldır */
+                flex-basis: 0; /* Taban genişliği 0 yap */
+             }
+             .resume-sidebar nav ul li a { 
+                padding: 0.5rem 0.8rem; 
+                font-size: 0.85rem; 
+             }
+        }
+        @media screen and (max-width: 480px) {
+            .container { padding: 0 1rem; } 
+            .top-left-controls { left: 15px; top: 15px; }
+            .back-btn { height: 40px; padding: 0 15px 0 10px; gap: 6px; }
+            .back-btn i { font-size: 1em; }
+            .back-btn .back-btn-text { font-size: 0.85em; }
+
+            .header-btn { /* Genel buton stilini mobil için küçült */
+                height: 38px;
+                padding: 0 10px;
+                font-size: 0.9rem;
+            }
+            .header-btn i { /* İkon boyutunu ayarla */
+                 font-size: 0.9em;
+            }
+
+            .resume-main-content .page-title { font-size: 1.8rem; }
+            .resume-section {
+                padding: 1rem;
+            }
+            .resume-section h2 { font-size: 1.3rem;}
+            .settings-popup { padding: 20px; width: 95%; max-width: 300px; }
+            .settings-header h3 { font-size: 1.1rem; }
+            .setting-option span { font-size: 0.85rem; }
+            .theme-switch { width: 44px; height: 24px; }
+            .slider:before { height: 16px; width: 16px; }
+            input:checked + .slider:before { transform: translateX(20px); }
+            .lang-btn-popup { padding: 6px 10px; font-size: 0.8rem; }
+            .resume-item {
+                padding: 1rem;
+            }
+        }
+
+        /* Ensure sufficient hit area for buttons/links */
+        button, a, .tech-item, .social-link, .contact-btn {
+            cursor: pointer;
+            user-select: none;
+            /* Ensure they are not covered by other elements */
+            position: relative; 
+            z-index: 2; /* Diğer içeriklerin üzerinde olduğundan emin ol */
+        }
+
+        /* General focus styles for accessibility */
+        button:focus, a:focus, .tech-item:focus, .social-link:focus, .contact-btn:focus {
+            outline: 2px solid var(--accent);
+            outline-offset: 3px; /* Odak halkasını elementin dışına taşı */
+        }
+
+        /* Prevent text selection issues on buttons/links */
+        button, a {
+            -webkit-tap-highlight-color: transparent; /* Mobil cihazlarda dokunma vurgusunu kaldır */
+        }
+
+        /* Adjust spacing for social links if they are too close on mobile */
+        @media screen and (max-width: 480px) {
+            .social-links {
+                gap: 10px; /* Sosyal linkler arası boşluğu ayarla */
+            }
+            /* Belki header buton grupları için de gap ayarı yapılabilir */
+            .header-btn-group {
+                gap: 0.5rem; /* Header buton grupları için boşluk */
+            }
+        }
+
+        .resume-section .resume-item .links a {
+            color: var(--text-color);
+            text-decoration: none;
+            transition: color 0.3s ease;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 8px 12px;
+            border-radius: 6px;
+            background-color: var(--item-bg);
+        }
+
+        .resume-section .resume-item .links a:hover {
+            color: var(--accent);
+        }
+
+        /* Accordion Styles */
+        .accordion {
+            width: 100%;
+            margin-top: 20px;
+        }
+
+        .accordion-item {
+            background-color: var(--resume-item-bg);
+            margin-bottom: 10px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+        }
+
+        .accordion-header {
+            background-color: transparent;
+            color: var(--text-primary);
+            cursor: pointer;
+            padding: 18px 20px;
+            width: 100%;
+            text-align: left;
+            border: none;
+            outline: none;
+            font-size: 1.1rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .accordion-header i {
+            transition: transform 0.3s ease;
+        }
+
+        .accordion-header.active i {
+            transform: rotate(180deg);
+        }
+
+        .accordion-content {
+            padding: 0 20px;
+            background-color: transparent;
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out, padding 0.3s ease-out;
+        }
+
+        .accordion-content .resume-item {
+            padding-top: 0;
+            padding-bottom: 20px;
+            border-bottom: none;
+            box-shadow: none;
+        }
+
+/* Mavi seçim engelleyici - butonlar ve interaktif elementler için */
+.header-btn,
+.back-btn,
+button,
+.contact-btn,
+.tech-item,
+.social-link,
+#lang-toggle-btn,
+#theme-toggle-btn,
+.accordion-header {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    -webkit-touch-callout: none;
+    -webkit-tap-highlight-color: transparent;
+    outline: none;
+}
+
+/* Buton focus için özel stil */
+.header-btn:focus,
+.back-btn:focus,
+button:focus,
+.accordion-header:focus {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
+}

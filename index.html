@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+    <!-- Basic Meta Tags: SEO and Compatibility -->
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="2m6hNAoGoyNpD6vOxUivIMyW-LyeFz5w7zI_xInx4Kk" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, minimum-scale=1.0">
+    <meta name="description" content="Come see.">
+    <meta name="keywords" content="Typhon64, Typhon 64, Tyhon 64, Typhon, typhoon, typh, typho">
+    <meta name="author" content="Typhon64">
+    <meta name="robots" content="index, follow">
+    <meta name="color-scheme" content="dark light">
+    
+    <!-- SEO Optimization -->
+    <link rel="canonical" href="https://typhon64.github.io/">
+    
+    <!-- Cache Control - Force fresh content -->
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    
+    <!-- Security & Extension Protection -->
+    <meta name="referrer" content="no-referrer-when-downgrade">
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval' https://cdnjs.cloudflare.com https://cdn.jsdelivr.net 'wasm-unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com https://cdnjs.cloudflare.com; font-src 'self' https://fonts.gstatic.com https://cdnjs.cloudflare.com; img-src 'self' data: blob:; connect-src 'self'; object-src 'none'; base-uri 'self'; worker-src 'self' blob:;">
+    <meta name="theme-color" content="#8B5CF6">
+    
+    <!-- Normalize CSS for cross-browser consistency -->
+    <link rel="stylesheet" href="css/normalize.css?v=1.0.0&t=1736867776">
+    
+    <!-- Preload Fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" as="style" crossorigin="anonymous">
+    
+    <!-- Font fallback for slow networks -->
+    <style>
+        /* Immediate font fallback to prevent layout shift */
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', sans-serif;
+        }
+        .header-logo, .terminal-body, .prompt, .command {
+            font-family: 'SF Mono', 'Monaco', 'Cascadia Code', 'Roboto Mono', monospace;
+        }
+    </style>
+    
+    <!-- Minimal Font Loading - Privacy Optimized -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    
+    <!-- Privacy-Optimized Font Loading -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet" media="print" onload="this.media='all'" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/fontawesome.min.css" media="print" onload="this.media='all'" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/solid.min.css" media="print" onload="this.media='all'" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/brands.min.css" media="print" onload="this.media='all'" crossorigin="anonymous" referrerpolicy="no-referrer">
+    
+    <!-- Open Graph /  Meta Tags -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://typhon64.github.io/">
+    <meta property="og:site_name" content="Typhon64">
+    <meta property="og:title" content="Typhon64">
+    <meta property="og:description" content="Come see Typhon64's personal website and cybersecurity insights.">
+    <meta property="og:image" content="https://typhon64.github.io/media/pfp.webp">
+    
+    <!-- Twitter Meta Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://typhon64.github.io/">
+    <meta name="twitter:title" content="Typhon64">
+    <meta name="twitter:description" content="Come see Typhon64's personal website and cybersecurity insights.">
+    <meta property="twitter:image" content="https://typhon64.github.io/media/pfp.webp">
+    
+    <title>Typhon64</title>
+
+    <!-- Favicon -->
+    <link rel="icon" href="media/favicon.webp" type="image/webp">
+    
+    <!-- Custom CSS with aggressive cache busting -->
+    <link rel="stylesheet" href="css/style.css?v=1.0.13&t=1736867776">
+    
+    <!-- Privacy-Optimized JS Preloading -->
+    <link rel="preload" href="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" as="script" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" as="script" crossorigin="anonymous" referrerpolicy="no-referrer">
+    <link rel="preload" href="script/script.js?v=1.0.13&t=1736867776" as="script">
+    
+
+    
+    <!-- Structured Data for SEO -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "Typhon64",
+      "alternateName": ["Typhon 64", "Tyhon 64", "Typhon", "typhoon", "typh", "typho"],
+      "url": "https://typhon64.github.io/",
+      "image": "https://typhon64.github.io/media/pfp.webp",
+      "sameAs": [
+        "https://github.com/typhon64",
+        "https://twitter.com/typhon64",
+        "https://typhon64.gitbook.io/notes"
+      ],
+      "jobTitle": "Cybersecurity Researcher",
+      "worksFor": {
+        "@type": "Organization",
+        "name": "Independent"
+      },
+      "description": "Cybersecurity researcher specializing in OSINT, OPSEC, and reverse engineering. Passionate about research, security analysis, and computer science.",
+      "knowsAbout": [
+        "Cybersecurity",
+        "OSINT",
+        "OPSEC", 
+        "Reverse Engineering",
+        "Computer Science",
+        "Security Research"
+      ],
+      "hasOccupation": {
+        "@type": "Occupation",
+        "name": "Cybersecurity Researcher",
+        "occupationLocation": {
+          "@type": "Place",
+          "name": "Remote"
+        }
+      },
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "contactType": "professional",
+        "email": "hey404@tutamail.com"
+      }
+    }
+    </script>
+    
+    <!-- Privacy-Optimized Particles.js -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js" defer crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body>
+    <!-- Particles.js: Covers the entire page, including header -->
+    <div id="particles-js" aria-hidden="true"></div>
+
+    <!-- Header: Logo only, navigation removed -->
+    <header class="header">
+        <div class="header-inner">
+            <div class="header-left">
+                <span class="header-logo" translate="no">
+                  <span class="network-icon" aria-hidden="true" style="display:inline-block;width:1.2em;height:1.2em;vertical-align:middle;margin-right:0.5em;">
+                    <svg viewBox="0 0 24 24" width="1.2em" height="1.2em" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <circle cx="5" cy="12" r="2" stroke="var(--accent)" stroke-width="2"/>
+                      <circle cx="19" cy="12" r="2" stroke="var(--accent)" stroke-width="2"/>
+                      <circle cx="12" cy="5" r="2" stroke="var(--accent)" stroke-width="2"/>
+                      <circle cx="12" cy="19" r="2" stroke="var(--accent)" stroke-width="2"/>
+                      <line x1="7" y1="12" x2="10" y2="12" stroke="var(--accent)" stroke-width="2"/>
+                      <line x1="14" y1="12" x2="17" y2="12" stroke="var(--accent)" stroke-width="2"/>
+                      <line x1="12" y1="7" x2="12" y2="10" stroke="var(--accent)" stroke-width="2"/>
+                      <line x1="12" y1="14" x2="12" y2="17" stroke="var(--accent)" stroke-width="2"/>
+                    </svg>
+                  </span>
+                  Typhon64
+                </span>
+                <div class="header-btn-group">
+                    <button onclick="window.open('https://typhon64.gitbook.io/notes', '_blank')" class="header-btn" rel="noopener noreferrer">Notes</button>
+                    <button onclick="window.location.href='resume.html'" class="header-btn">Resume</button>
+                </div>
+            </div>
+            <div class="header-right">
+                <button id="theme-toggle" class="header-btn theme-btn" title="Toggle Theme" aria-label="Toggle theme" aria-pressed="false">
+                    <i class="fas fa-moon" aria-hidden="true"></i>
+                    <i class="fas fa-sun" aria-hidden="true"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            <div class="content">
+                <div class="left-section">
+                    <div class="about">
+                        <h1 class="glitch" data-text="Typhon" translate="no">Typhon</h1>
+                        <div class="hero-subtext">
+                            <span class="line"></span>
+                            <p>Don't be afraid to learn</p>
+                        </div>
+                        <div class="hi-text">Hey.</div>
+                        <div style="height: 1.5rem;"></div>
+                        <p>
+                          Well, this site serves as a hub for my work. For my resume and blogs, go to the top two buttons. You can contact me via email, Session, and Signal.<br><span class="highlight">All content provided is for educational purposes only. The user is solely responsible for any misuse of the content.</span>
+                        </p>
+                        
+                        <div class="tech-stack" aria-label="Technical skills">
+                            <button class="tech-item" data-tooltip="Research" aria-label="Research skill">
+                                <i class="fas fa-search" aria-hidden="true"></i>
+                            </button>
+                            <button class="tech-item" data-tooltip="Osint" aria-label="OSINT skill">
+                                <i class="fas fa-user-secret" aria-hidden="true"></i>
+                            </button>
+                            <button class="tech-item" data-tooltip="Opsec" aria-label="OPSEC skill">
+                                <i class="fas fa-user-shield" aria-hidden="true"></i>
+                            </button>
+                            <button class="tech-item" data-tooltip="Reverse Engineering" aria-label="Reverse Engineering skill">
+                                <i class="fas fa-sync-alt" aria-hidden="true"></i>
+                            </button>
+                            <button class="tech-item" data-tooltip="Computer Science" aria-label="Computer Science skill">
+                                <i class="fas fa-microchip" aria-hidden="true"></i>
+                            </button>
+                        </div>
+
+                        <div class="contact-buttons" translate="no">
+                            <a href="mailto:hey404@tutamail.com" class="contact-btn" translate="no">
+                                <i class="fas fa-envelope" aria-hidden="true"></i>
+                                <span>Contact Me</span>
+                            </a>
+                            <button type="button" class="contact-btn session-btn" onclick="copySessionID()" translate="no" style="min-width: 120px;">
+                                <span class="session-icon" aria-hidden="true" style="display:inline-block;width:1.2em;height:1.2em;vertical-align:middle;margin-right:0.5em;">
+                                    <svg viewBox="0 0 24 24" width="1.2em" height="1.2em" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2v10Z" stroke="var(--text-primary)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                                    </svg>
+                                </span>
+                                <span>Session</span>
+                            </button>
+                            <a href="https://signal.me/#eu/vcVMff2BnlKWCt-nMeA4Wy6ReLE2bq9MU58dYsyi_NFzGdTFjrhBy51Pean9KNrN" target="_blank" rel="noopener noreferrer" class="contact-btn" translate="no">
+                                <i class="fas fa-comment-dots" aria-hidden="true"></i>
+                                <span>Signal</span>
+                            </a>
+                            <span id="session-copied" style="display:none;margin-left:10px;color:var(--accent);font-size:0.95rem;">Copied!</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="right-section">
+                    <div class="profile-card">
+                        <div class="card-header site-harmony-banner" style="background-image: url('media/profile-banner.webp');" aria-label="Profile banner">
+                            <img src="media/pfp.webp" alt="Profile Picture" class="profile-img" loading="lazy" width="100" height="100">
+                        </div>
+                        <div class="card-body">
+                            <div class="profile-info">
+                                <h2 translate="no">Typh</h2>
+                                <div class="profile-meta">
+                                    <span class="badge">Researcher</span>
+                                    <span id="current-time" class="time-badge" aria-label="Current time">14:04</span>
+                                </div>
+                                <div class="profile-action">
+                                    <button onclick="window.location.href='404.html'" class="profile-btn">404</button>
+                                </div>
+                            </div>
+                            
+                            <!-- Audio Vocalizer -->
+                            <div class="audio-vocalizer" id="audio-vocalizer" onclick="toggleAudio()" aria-label="Music player visualizer">
+                                <div class="vocalizer-play-btn">
+                                    <i class="fas fa-play" aria-hidden="true"></i>
+                                </div>
+                                <div class="vocalizer-bars">
+                                    <div class="vocalizer-bar"></div>
+                                    <div class="vocalizer-bar"></div>
+                                    <div class="vocalizer-bar"></div>
+                                    <div class="vocalizer-bar"></div>
+                                    <div class="vocalizer-bar"></div>
+                                    <div class="vocalizer-bar"></div>
+                                    <div class="vocalizer-bar"></div>
+                                    <div class="vocalizer-bar"></div>
+                                    <div class="vocalizer-bar"></div>
+                                    <div class="vocalizer-bar"></div>
+                                </div>
+                            </div>
+                            
+                            <div class="interests" translate="no">
+                                <h3>Interests</h3>
+                                <div class="interest-tags">
+                                    <span translate="no">Security Researcher</span>
+                                    <span translate="no">Cyber Security</span>
+                                    <span translate="no">Computer Science</span>
+                                 
+
+
+                                </div>
+                            </div>
+                            
+                            <div class="social-links">
+                                <a href="https://github.com/typhon64" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="GitHub">
+                                    <i class="fab fa-github" aria-hidden="true"></i>
+                                </a>
+                                <a href="https://twitter.com/typhon64" target="_blank" rel="noopener noreferrer" class="social-link" aria-label="Twitter">
+                                    <i class="fab fa-twitter" aria-hidden="true"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="terminal-container">
+                <div class="terminal" role="region" aria-label="Terminal Display">
+                    <div class="terminal-header">
+                        <span id="terminal-btn-red" class="terminal-btn red" aria-hidden="true"></span>
+                        <span id="terminal-btn-yellow" class="terminal-btn yellow" aria-hidden="true"></span>
+                        <span id="terminal-btn-green" class="terminal-btn green" aria-hidden="true"></span>
+                    </div>
+                    <div class="terminal-body">
+                        <p class="terminal-text"><span class="prompt" translate="no">Typhon64@system:~$</span> <span class="command" translate="no">whoami</span></p>
+                        <p class="terminal-output">Examine to find out</p>
+                        <p class="terminal-text"><span class="prompt" translate="no">Typhon64@system:~$</span> <span class="command" translate="no">date</span></p>
+                        <p class="terminal-output" id="current-date">2024-03-19 14:04:00</p>
+                        <p class="terminal-text"><span class="prompt" translate="no">Typhon64@system:~$</span> <span class="cursor"></span></p>
+                    </div>
+                </div>
+            </div>
+
+            
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer" style="text-align:center;padding:1rem;font-size:0.8rem;opacity:0.7;margin-top:2rem;">
+        <p></p>
+    </footer>
+
+    <!-- Privacy-Optimized GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    
+    <!-- Audio element for background music -->
+    <audio id="background-audio" preload="metadata" loop>
+        <source src="media/hmm.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
+    <!-- Custom JS -->
+    <script src="script/script.js?v=1.0.13&t=1736867776" defer></script>
+    
+    <!-- Cache notification for returning visitors -->
+    <script>
+        // Check if this is an old cached version
+        const CURRENT_VERSION = '1.0.13-1736867776';
+        const lastVersion = localStorage.getItem('siteVersion');
+        
+        if (lastVersion && lastVersion !== CURRENT_VERSION) {
+            console.log('🔄 Site updated! Please refresh for the latest version.');
+            // Show update notification to user
+            const updateNotice = document.createElement('div');
+            updateNotice.innerHTML = `
+                <div style="position:fixed;top:10px;right:10px;background:var(--accent);color:var(--bg-primary);padding:10px 15px;border-radius:8px;z-index:99999;font-size:14px;box-shadow:0 4px 12px rgba(0,0,0,0.3);cursor:pointer;" onclick="window.location.reload(true);">
+                    🔄 Site Updated! Click to Refresh
+                </div>
+            `;
+            document.body.appendChild(updateNotice);
+            
+            // Auto-hide after 10 seconds
+            setTimeout(() => {
+                if (updateNotice.parentNode) updateNotice.remove();
+            }, 10000);
+        }
+        
+        // Save current version
+        localStorage.setItem('siteVersion', CURRENT_VERSION);
+    </script>
+
+    <!-- Time update script -->
+    <script>
+        function updateTime() {
+            const now = new Date();
+            const istanbulTime = new Date(now.getTime() + (3 * 60 * 60 * 1000));
+            
+            let hours = istanbulTime.getUTCHours();
+            let minutes = istanbulTime.getUTCMinutes();
+            
+            hours = hours < 10 ? '0' + hours : hours;
+            minutes = minutes < 10 ? '0' + minutes : minutes;
+            
+            const timeElement = document.getElementById('current-time');
+            if (timeElement) {
+                timeElement.textContent = hours + ':' + minutes;
+                timeElement.setAttribute('aria-label', 'Current time: ' + hours + ':' + minutes);
+            }
+            
+            const year = istanbulTime.getUTCFullYear();
+            const month = String(istanbulTime.getUTCMonth() + 1).padStart(2, '0');
+            const day = String(istanbulTime.getUTCDate()).padStart(2, '0');
+            const seconds = String(istanbulTime.getUTCSeconds()).padStart(2, '0');
+            
+            const dateElement = document.getElementById('current-date');
+            if (dateElement) {
+                dateElement.textContent = `${year}-${month}-${day} ${hours}:${minutes}:${seconds}`;
+            }
+        }
+        
+        updateTime();
+        setInterval(updateTime, 1000);
+    </script>
+    
+    <!-- Session ID copy script -->
+    <script>
+    // Fixed Session ID - Updated Version
+    function copySessionID() {
+        const FIXED_SESSION_ID = '0500d49ca2b7d6e4149e53e8eba080f0b3795af952810f19bc21882121a7a4e760';
+        console.log('Copying Session ID:', FIXED_SESSION_ID); // Debug
+        
+        navigator.clipboard.writeText(FIXED_SESSION_ID).then(function() {
+            console.log('Session ID copied successfully'); // Debug
+            const el = document.getElementById('session-copied');
+            if (el) {
+                el.style.display = 'inline';
+                setTimeout(() => { el.style.display = 'none'; }, 2000);
+            }
+        }).catch(function(err) {
+            console.error('Failed to copy Session ID:', err);
+            // Fallback for older browsers
+            const textArea = document.createElement('textarea');
+            textArea.value = FIXED_SESSION_ID;
+            document.body.appendChild(textArea);
+            textArea.select();
+            document.execCommand('copy');
+            document.body.removeChild(textArea);
+            const el = document.getElementById('session-copied');
+            if (el) {
+                el.style.display = 'inline';
+                setTimeout(() => { el.style.display = 'none'; }, 2000);
+            }
+        });
+    }
+    </script>
+
+    <!-- Audio Player Control Script -->
+    <script>
+    let audioPlaying = false;
+    let audioElement = null;
+
+    function toggleAudio() {
+        try {
+            if (!audioElement) {
+                audioElement = document.getElementById('background-audio');
+            }
+            
+            if (!audioElement) {
+                console.log('Audio element not found');
+                return;
+            }
+
+            const vocalizer = document.getElementById('audio-vocalizer');
+            const playIcon = vocalizer ? vocalizer.querySelector('.vocalizer-play-btn i') : null;
+
+            if (audioPlaying) {
+                // Pause audio
+                audioElement.pause();
+                audioPlaying = false;
+                if (vocalizer) {
+                    vocalizer.classList.remove('playing');
+                }
+                if (playIcon) {
+                    playIcon.className = 'fas fa-play';
+                }
+                // Store state and current time
+                try {
+                    localStorage.setItem('audioPlaying', 'false');
+                    localStorage.setItem('audioCurrentTime', audioElement.currentTime);
+                } catch (e) {
+                    console.warn('Could not save audio state:', e.message);
+                }
+                console.log('Audio paused at:', audioElement.currentTime);
+            } else {
+                // Play audio
+                audioElement.volume = 0.3;
+                
+                // Resume from saved time if available
+                let savedTime;
+                try {
+                    savedTime = localStorage.getItem('audioCurrentTime');
+                } catch (e) {
+                    console.warn('Could not read audio time:', e.message);
+                    savedTime = null;
+                }
+                if (savedTime && !isNaN(parseFloat(savedTime)) && parseFloat(savedTime) >= 0) {
+                    try {
+                        audioElement.currentTime = Math.min(parseFloat(savedTime), audioElement.duration || 0);
+                        console.log('Resuming from:', savedTime);
+                    } catch (e) {
+                        console.warn('Could not set audio time:', e.message);
+                    }
+                }
+                
+                audioElement.play().then(() => {
+                    audioPlaying = true;
+                    if (vocalizer) {
+                        vocalizer.classList.add('playing');
+                    }
+                    if (playIcon) {
+                        playIcon.className = 'fas fa-pause';
+                    }
+                    // Store state
+                    try {
+                        localStorage.setItem('audioPlaying', 'true');
+                    } catch (e) {
+                        console.warn('Could not save audio state:', e.message);
+                    }
+                    console.log('Audio playing');
+                }).catch(error => {
+                    console.log('Audio play failed:', error.message);
+                });
+            }
+        } catch (error) {
+            console.log('Audio control error:', error.message);
+        }
+    }
+
+    // Initialize audio state on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        const audio = document.getElementById('background-audio');
+        const vocalizer = document.getElementById('audio-vocalizer');
+        
+        if (audio) {
+            audio.volume = 0.3;
+            
+            // Save current time periodically (throttled)
+            let lastSaveTime = 0;
+            audio.addEventListener('timeupdate', function() {
+                if (audioPlaying && Date.now() - lastSaveTime > 1000) { // Save max every 1 second
+                    try {
+                        localStorage.setItem('audioCurrentTime', audio.currentTime);
+                        lastSaveTime = Date.now();
+                    } catch (e) {
+                        console.warn('Could not save audio time:', e.message);
+                    }
+                }
+            });
+            
+            // Error handling
+            audio.addEventListener('error', function(e) {
+                console.warn('Audio loading error:', e.type);
+                // Fallback: hide vocalizer if audio fails
+                if (vocalizer) {
+                    vocalizer.style.display = 'none';
+                }
+            });
+            
+            // Additional error events
+            audio.addEventListener('abort', function() {
+                console.warn('Audio loading aborted');
+            });
+            
+            audio.addEventListener('stalled', function() {
+                console.warn('Audio loading stalled');
+            });
+            
+            // Check if audio should be playing from previous session
+            let savedState, savedTime;
+            try {
+                savedState = localStorage.getItem('audioPlaying');
+                savedTime = localStorage.getItem('audioCurrentTime');
+            } catch (e) {
+                console.warn('Could not read audio state:', e.message);
+                savedState = null;
+                savedTime = null;
+            }
+            
+            if (savedState === 'true') {
+                // Don't auto-play, just prepare to resume
+                if (savedTime && !isNaN(parseFloat(savedTime))) {
+                    audio.currentTime = parseFloat(savedTime);
+                }
+                console.log('Audio ready to resume. Click vocalizer to play.');
+            }
+        }
+    });
+    </script>
+
+    <i hidden aria-hidden="true" data-k="VGhlIHNpdGUgd2FzIGNyZWF0ZWQgYnkgVHlwaG9uNjQsIHdobyBvd25zIHRoZSBtYWluIGlkZWEgYW5kIGNvZGU6IGh0dHBzOi8vdHlwaG9uNjQuZ2l0aHViLmlvIGdpdGh1Yi5jb20vdHlwaG9uNjQ="></i>
+</body>
+</html>
