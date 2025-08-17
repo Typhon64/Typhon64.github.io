@@ -42,17 +42,294 @@
     .scanlines { position: fixed; inset: 0; pointer-events: none; background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.04), rgba(255,255,255,0.04) 1px, transparent 1px, transparent 3px); mix-blend-mode: overlay; opacity: .12; z-index: 3; }
     .noise { position: fixed; inset: 0; pointer-events: none; background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="60" height="60" viewBox="0 0 60 60"><filter id="n"><feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="2" stitchTiles="stitch"/></filter><rect width="100%" height="100%" filter="url(%23n)" opacity="0.05"/></svg>'); opacity:.25; mix-blend-mode: soft-light; z-index: 2; }
 
-    /* Background legacy 404 (blurred, desaturated) */
-    .bg-legacy { position: fixed; inset: 0; display: grid; place-items: center; pointer-events: none; opacity: .3; filter: blur(2.5px) saturate(70%); transform: scale(1.02); z-index: 0; }
-    .bg-legacy .win98-window { width: min(720px, 86vw); background: #c0c0c0; border: 2px solid #808080; box-shadow: inset -1px -1px 0 #404040, inset 1px 1px 0 #ffffff, inset -2px -2px 0 #808080, inset 2px 2px 0 #dfdfdf; border-radius: 2px; }
-    .bg-legacy .titlebar { height: 22px; display: flex; align-items: center; justify-content: space-between; padding: 0 6px; background: linear-gradient(90deg, #000080, #3a3ab0); color: #fff; font-weight: 700; font-size: 12px; }
-    .bg-legacy .titlebar .dots { display: inline-flex; gap: 3px; }
-    .bg-legacy .titlebar .dots span { width: 10px; height: 10px; background: #c0c0c0; border: 2px solid #808080; box-shadow: inset -1px -1px 0 #404040, inset 1px 1px 0 #ffffff; display: inline-block; }
-    .bg-legacy .menubar { padding: 3px 6px; font-size: 12px; color: #000; }
-    .bg-legacy .legacy-content { display: flex; gap: 10px; padding: 10px; color: #000; }
-    .bg-legacy .legacy-icon { width: 28px; height: 28px; background: linear-gradient(45deg,#ff2d2d 25%,transparent 25%,transparent 75%,#ff2d2d 75%), linear-gradient(45deg,#ff2d2d 25%,transparent 25%,transparent 75%,#ff2d2d 75%); background-size:10px 10px; background-position:0 0,5px 5px; border:2px solid #800000; box-shadow: inset 0 0 0 2px #ff9f9f; }
-    .bg-legacy .legacy-text .mono { font-family: "Courier New", monospace; }
-    .bg-legacy .legacy-status { padding: 4px 6px; font-size: 11px; background: #dcdcdc; border-top: 2px solid #808080; box-shadow: inset 0 1px 0 #ffffff; color: #000; }
+    /* Background realistic system errors */
+    .bg-system-errors { position: fixed; inset: 0; pointer-events: none; opacity: .35; z-index: 0; overflow: hidden; font-family: 'Consolas', 'Courier New', monospace; }
+    
+    .error-logs { position: absolute; top: 20px; left: 10px; right: 10px; height: 65%; overflow: hidden; }
+    .log-entry { 
+      color: #ff3333; 
+      font-size: 12px; 
+      margin-bottom: 6px; 
+      opacity: 0.9; 
+      white-space: nowrap; 
+      animation: log-scroll 40s linear infinite;
+      transform: translateX(100vw);
+      text-shadow: 0 0 8px currentColor;
+      font-weight: 500;
+    }
+    .log-entry:nth-child(odd) { color: #ff6600; animation-delay: -3s; }
+    .log-entry:nth-child(3n) { color: #ff1a1a; animation-delay: -8s; }
+    .log-entry:nth-child(4n) { color: #ff4444; animation-delay: -15s; }
+    .log-entry:nth-child(5n) { color: #cc0000; animation-delay: -22s; }
+    
+    @keyframes log-scroll {
+      0% { transform: translateX(100vw); opacity: 0; }
+      10% { opacity: 0.9; }
+      90% { opacity: 0.9; }
+      100% { transform: translateX(-100vw); opacity: 0; }
+    }
+    
+    .system-panels { position: absolute; bottom: 15px; left: 10px; right: 10px; display: flex; gap: 12px; flex-wrap: wrap; }
+    .panel { 
+      flex: 1; 
+      min-width: 200px;
+      background: rgba(20,20,20,0.8); 
+      border: 1px solid rgba(255,50,50,0.4); 
+      border-radius: 6px; 
+      overflow: hidden;
+      box-shadow: 0 0 15px rgba(255,0,0,0.3);
+    }
+    .panel-header { 
+      background: rgba(255,0,0,0.4); 
+      color: #ff2222; 
+      font-size: 11px; 
+      padding: 6px 10px; 
+      font-weight: bold;
+      border-bottom: 1px solid rgba(255,255,255,0.2);
+      text-shadow: 0 0 5px currentColor;
+    }
+    .panel-content { padding: 8px 10px; }
+    .metric, .event { 
+      color: #ffaa00; 
+      font-size: 10px; 
+      margin-bottom: 4px; 
+      opacity: 0.95;
+      text-shadow: 0 0 3px currentColor;
+    }
+    .status-bar { 
+      height: 10px; 
+      background: linear-gradient(90deg, #ff0000, #ff6600, #ff0000); 
+      margin-top: 6px; 
+      border-radius: 3px;
+      animation: status-pulse 1.5s ease-in-out infinite;
+      box-shadow: 0 0 10px rgba(255,0,0,0.5);
+    }
+    
+    @keyframes status-pulse {
+      0%, 100% { opacity: 0.6; }
+      50% { opacity: 1; }
+    }
+
+    @keyframes pulse-glow {
+      0%, 100% { 
+        opacity: 0.8; 
+        text-shadow: 0 0 20px var(--accent); 
+      }
+      50% { 
+        opacity: 1; 
+        text-shadow: 0 0 30px var(--accent), 0 0 40px var(--accent); 
+      }
+    }
+
+    @keyframes subtle-pulse {
+      0%, 100% { 
+        border-color: var(--accent);
+        box-shadow: 0 0 5px rgba(255, 26, 60, 0.3);
+      }
+      50% { 
+        border-color: var(--warn);
+        box-shadow: 0 0 8px rgba(245, 158, 11, 0.4);
+      }
+    }
+
+    /* Tablet responsive */
+    @media (max-width: 1024px) {
+      .ransom-wrap {
+        width: min(900px, 92vw);
+        padding: 18px 20px;
+      }
+      
+      .glitch-404 {
+        font-size: clamp(52px, 9vw, 100px);
+      }
+    }
+
+    /* Mobile responsive adjustments */
+    @media (max-width: 768px) {
+      .ransom-wrap {
+        width: min(800px, 94vw);
+        padding: 16px 18px;
+      }
+      
+      .error-logs { 
+        top: 15px; 
+        left: 8px; 
+        right: 8px; 
+        height: 50%; 
+      }
+      
+      .log-entry { 
+        font-size: 10px; 
+        margin-bottom: 4px; 
+      }
+      
+      .system-panels { 
+        bottom: 12px; 
+        left: 8px; 
+        right: 8px; 
+        gap: 8px; 
+        flex-direction: column;
+      }
+      
+      .panel { 
+        min-width: 100%; 
+        margin-bottom: 6px;
+      }
+      
+      .panel-header { 
+        font-size: 10px; 
+        padding: 5px 8px; 
+      }
+      
+      .metric, .event { 
+        font-size: 9px; 
+      }
+      
+      .glitch-404 {
+        font-size: clamp(45px, 8vw, 80px);
+        margin: 10px 0 6px;
+      }
+      
+      .grid {
+        grid-template-columns: 1fr;
+        gap: 12px;
+      }
+      
+      .actions {
+        flex-direction: column;
+        gap: 8px;
+      }
+      
+      .btn {
+        width: 100%;
+        max-width: 200px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .ransom-wrap {
+        width: min(95vw, 400px);
+        padding: 14px 16px;
+      }
+      
+      .error-logs {
+        top: 10px;
+        left: 5px;
+        right: 5px;
+        height: 45%;
+      }
+      
+      .log-entry { 
+        font-size: 9px; 
+        margin-bottom: 3px; 
+      }
+      
+      .system-panels {
+        bottom: 8px;
+        left: 5px;
+        right: 5px;
+        gap: 6px;
+      }
+      
+      .panel-header { 
+        font-size: 9px; 
+        padding: 4px 6px; 
+      }
+      
+      .metric, .event { 
+        font-size: 8px; 
+      }
+      
+      .glitch-404 {
+        font-size: clamp(38px, 7vw, 65px);
+        margin: 8px 0 5px;
+      }
+      
+      .header .brand {
+        font-size: 14px;
+      }
+      
+      .tag {
+        font-size: 12px;
+      }
+      
+      .sub {
+        font-size: 13px;
+        margin-bottom: 10px;
+      }
+      
+      .actions {
+        margin-top: 12px;
+      }
+      
+      .btn {
+        padding: 8px 12px;
+        font-size: 14px;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .ransom-wrap {
+        width: 96vw;
+        padding: 12px 14px;
+      }
+      
+      .glitch-404 {
+        font-size: clamp(32px, 6vw, 55px);
+      }
+      
+      .error-logs {
+        height: 40%;
+      }
+      
+      .log-entry {
+        font-size: 8px;
+        margin-bottom: 2px;
+      }
+      
+      .panel-header {
+        font-size: 8px;
+        padding: 3px 5px;
+      }
+      
+      .metric, .event {
+        font-size: 7px;
+      }
+      
+      .header .brand {
+        font-size: 12px;
+      }
+      
+      .btn {
+        padding: 6px 10px;
+        font-size: 13px;
+      }
+    }
+
+    /* Mobile responsive for disclaimer */
+    @media (max-width: 768px) {
+      #bottom-disclaimer {
+        bottom: 15px !important;
+        right: 15px !important;
+        font-size: 12px !important;
+        padding: 8px 12px !important;
+      }
+    }
+
+    @media (max-width: 480px) {
+      #bottom-disclaimer {
+        bottom: 12px !important;
+        right: 12px !important;
+        font-size: 11px !important;
+        padding: 7px 10px !important;
+      }
+    }
+
+    /* Hover effect for disclaimer */
+    #bottom-disclaimer:hover {
+      transform: scale(1.05);
+      box-shadow: 0 0 12px rgba(255, 26, 60, 0.5);
+    }
 
     .viewport { position: fixed; inset: 0; display: grid; place-items: center; padding: 16px; padding-top: calc(16px + env(safe-area-inset-top)); padding-bottom: calc(16px + env(safe-area-inset-bottom)); overflow: auto; z-index: 1; }
 
@@ -82,7 +359,7 @@
     .glitch-404::before, .glitch-404::after { content: attr(data-text); position: absolute; left: 0; top: 0; } 
     .glitch-404::before { color: #00e5ff; transform: translateX(-1px); mix-blend-mode: screen; animation: jitter 2.2s infinite; opacity: .8; }
     .glitch-404::after { color: #ff3b3b; transform: translateX(1px); mix-blend-mode: screen; animation: jitter 2s infinite reverse; opacity: .7; }
-    @keyframes jitter { 0% { transform: translate(0,0) } 25% { transform: translate(.5px,-.5px) } 50% { transform: translate(-.5px,.5px) } 75% { transform: translate(.5px,.5px) } 100% { transform: translate(0,0) } }
+    @keyframes jitter { 0% { clip: rect(0, 9999px, 0, 0); transform: skew(0.5deg); } 5% { clip: rect(10px, 9999px, 20px, 0); transform: skew(0.3deg); } 10% { clip: rect(20px, 9999px, 30px, 0); transform: skew(0.8deg); } 100% { clip: rect(0, 9999px, 0, 0); transform: skew(0deg); } }
 
     .sub { color: var(--muted); margin-bottom: 12px; }
 
@@ -103,6 +380,7 @@
     .footer { margin-top: 12px; color: var(--muted); display: flex; justify-content: space-between; font-size: .9rem; border-top: 1px solid rgba(255,255,255,0.08); padding-top: 10px; }
 
     @media (max-width: 700px) { .grid { grid-template-columns: 1fr; } }
+
   </style>
 
 </head>
@@ -110,19 +388,63 @@
   <div class="scanlines" aria-hidden="true"></div>
   <div class="noise" aria-hidden="true"></div>
 
-  <!-- Background: legacy 404 (Win98-style) for layered look -->
-  <div class="bg-legacy" aria-hidden="true">
-    <div class="win98-window">
-      <div class="titlebar"><div class="t">404 - File Not Found</div><div class="dots"><span></span><span></span><span></span></div></div>
-      <div class="menubar">File  Edit  View  Help</div>
-      <div class="legacy-content">
-        <div class="legacy-icon"></div>
-        <div class="legacy-text">
-          <div><strong>Error:</strong> The requested resource could not be located.</div>
-          <div class="mono">Code: 0x00000194 — HTTP 404 NOT FOUND</div>
+  <!-- Background: realistic system errors for layered look -->
+  <div class="bg-system-errors" aria-hidden="true">
+    <div class="error-logs">
+      <div class="log-entry">[CRITICAL] T1486: Data Encrypted for Impact - AES-256-CTR encryption initiated on /var/www/html/</div>
+      <div class="log-entry">[ERROR] T1491: Defacement - Web root modified by Conti variant (IoC: sha256:abc123...)</div>
+      <div class="log-entry">[WARNING] T1070.004: Indicator Removal - Event logs cleared via wevtutil cl system</div>
+      <div class="log-entry">[INFO] T1021.002: Lateral Movement - SMB shares enumerated, credentials harvested via Mimikatz</div>
+      <div class="log-entry">[ERROR] T1566.001: Phishing - Initial access via spearphishing attachment (malware: Emotet)</div>
+      <div class="log-entry">[CRITICAL] T1485: Data Destruction - Files overwritten with ChaCha20-Poly1305 cipher</div>
+      <div class="log-entry">[WARNING] T1046: Network Service Scanning - Nmap scan detected from C2 server 185.234.218.40</div>
+      <div class="log-entry">[INFO] T1071.001: C2 Web Protocol - Beaconing to bulletproof host via HTTPS (domain: evilcorp.cc)</div>
+      <div class="log-entry">[ERROR] T1490: Inhibit System Recovery - Shadow copies deleted via vssadmin delete shadows /all /quiet</div>
+      <div class="log-entry">[CRITICAL] T1561.002: Disk Structure Wipe - MBR corrupted using custom bootkit</div>
+      <div class="log-entry">[WARNING] T1059.001: Command-Line Interface - PowerShell execution: Invoke-WebRequest to download payload</div>
+      <div class="log-entry">[INFO] T1110.003: Password Spraying - Attempted logins against admin accounts (source: 10.0.0.5)</div>
+      <div class="log-entry">[ERROR] T1003.001: Credential Dumping - LSASS memory dumped for offline cracking</div>
+      <div class="log-entry">[CRITICAL] T1027: Obfuscated Files - Payload encoded with XOR and base64, decoded at runtime</div>
+      <div class="log-entry">[WARNING] T1016: System Network Configuration Discovery - ipconfig /all executed</div>
+      <div class="log-entry">[INFO] T1082: System Information Discovery - Collected via systeminfo command</div>
+      <div class="log-entry">[ERROR] T1070.006: Timestomp - File timestamps modified to evade forensics</div>
+      <div class="log-entry">[CRITICAL] T1497: Virtualization/Sandbox Evasion - Checked for VM artifacts (VBoxService)</div>
+    </div>
+    <div class="system-panels">
+      <div class="panel">
+        <div class="panel-header">404 Error Analysis</div>
+        <div class="panel-content">
+          <div class="metric">HTTP Status: 404 Not Found</div>
+          <div class="metric">Resource: /missing/endpoint</div>
+          <div class="metric">Server: Apache/2.4.41</div>
+          <div class="status-bar"></div>
         </div>
       </div>
-      <div class="legacy-status">Address: /404 | <span translate="no">Typhon Web</span></div>
+      <div class="panel">
+        <div class="panel-header">Request Diagnostics</div>
+        <div class="panel-content">
+          <div class="event">Method: GET</div>
+          <div class="event">User-Agent: Mozilla/5.0</div>
+          <div class="event">Response Time: 0.23s</div>
+          <div class="event">Content-Type: text/html</div>
+        </div>
+      </div>
+      <div class="panel">
+        <div class="panel-header">Server Status</div>
+        <div class="panel-content">
+          <div class="event">Web Server: ONLINE</div>
+          <div class="event">Database: CONNECTED</div>
+          <div class="event">CDN: ACTIVE</div>
+          <div class="event">SSL: VALID</div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+  <!-- Initial disclaimer overlay -->
+  <div id="initial-disclaimer" style="position: fixed; inset: 0; z-index: 9999; display: flex; align-items: center; justify-content: center; background: rgba(0,0,0,0.9); backdrop-filter: blur(10px);">
+    <div style="text-align: center; color: var(--text); font-size: 2rem; font-weight: bold; text-shadow: 0 0 20px var(--accent); animation: pulse-glow 2s ease-in-out infinite;">
+      This is just a joke
     </div>
   </div>
 
@@ -162,126 +484,11 @@
 
     <div class="footer">
       <span>Press ENTER or ESC to comply with demands</span>
+      <span id="bottom-disclaimer" style="position: fixed; bottom: 20px; right: 20px; font-size: 14px; opacity: 1; color: var(--text); font-weight: 600; transition: opacity 0.5s ease, transform 0.3s ease; background: var(--panel); padding: 10px 14px; border-radius: 6px; border: 2px solid var(--accent); backdrop-filter: blur(8px); box-shadow: 0 4px 12px rgba(0,0,0,0.5);">⚠️ This is just a joke design - 404 page</span>
     </div>
   </div>
   </div>
 
-  <script>
-    const goHome = () => window.location.href = './';
-    const retry = () => window.location.reload();
-    document.getElementById('home')?.addEventListener('click', goHome);
-    document.getElementById('retry')?.addEventListener('click', retry);
-    // Keyboard: Enter/Esc → Return to Safety
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' || e.key === 'Escape' || e.keyCode === 27 || e.which === 27) {
-        e.preventDefault();
-        goHome();
-      }
-    });
-
-    // Simple countdown for the "Timeout" field (visual only)
-    let secs = 10 * 60;
-    const el = document.getElementById('count');
-    const tick = () => {
-      if (!el) return;
-      const m = String(Math.floor(secs / 60)).padStart(2, '0');
-      const s = String(secs % 60).padStart(2, '0');
-      el.textContent = `${m}:${s}`;
-      secs = Math.max(0, secs - 1);
-    };
-    tick();
-    setInterval(tick, 1000);
-  </script>
+  <script src="script/404.js" defer></script>
 </body>
 </html>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Error 404 | Page Not Found</title>
-    <link href="https://fonts.cdnfonts.com/css/perfect-dos-vga-437" rel="stylesheet">
-
-    <style>
-        @import "https://fonts.cdnfonts.com/css/perfect-dos-vga-437";
-
-        :root {
-            --background-color: #0827f5;
-            --text-color: #ccd6f1;
-            --scroll-color: blue;
-        }
-
-        body {
-            background-color: var(--background-color);
-            color: var(--text-color);
-            font-family: "Perfect DOS VGA 437 Win";
-            margin: 0;
-            padding: 0;
-            font-size: 1.25rem;
-        }
-
-        #e404 {
-            display: flex;
-            flex-direction: column;
-            padding: 32px;
-            max-width: 60%;
-            text-align: left;
-            gap: 0.5rem;
-            line-height: 1.25;
-            margin: 0 auto;
-        }
-
-        h1 {
-            font-size: 1.5rem;
-            font-weight: 400;
-            background: var(--text-color);
-            color: var(--background-color);
-            box-shadow: #000 8px 8px;
-            text-transform: uppercase;
-            width: fit-content;
-            padding: 5px;
-        }
-
-        p {
-            padding: 0;
-            margin: 0;
-        }
-
-        li::marker {
-            content: "* ";
-        }
-
-        .blink {
-            animation: blink 1s infinite;
-        }
-
-        @keyframes blink {
-            0%, 49% {
-                opacity: 0;
-            }
-            50%, 100% {
-                opacity: 1;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div id="e404">
-        <h1>Error 404</h1>
-        <p>A fatal exception 404 has occurred at C0DE:0x00000045 in 0x000001A4.
-            The current request will be terminated.</p>
-        <p>If problems continue, disable or remove any newly installed hardware or software. Disable BIOS memory options such as caching or shadowing. If you need to use Safe Mode to remove or disable components, restart your computer. Press F8 to select Advanced Startup Options, and then select Safe Mode.</p>
-        <ul>
-            <li>Press any key to return to the home page.</li>
-            <li>Press CTRL+ALT+DEL to restart your computer. You will lose any unsaved information in all applications.</li>
-        </ul>
-        <p>Press any key to continue...<span class="blink">█</span></p>
-              
-    </div>
-    
-    <script>
-        // Keyboard navigation disabled - use buttons or ENTER/ESC only
-    </script>
-</body>
-</html>
-
