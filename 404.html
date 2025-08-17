@@ -489,6 +489,55 @@
   </div>
   </div>
 
-  <script src="script/404.js" defer></script>
+  <script // 404 Page Script - Handles buttons, keyboard, countdown, and disclaimer animation
+
+const goHome = () => window.location.href = './';
+const retry = () => window.location.reload();
+
+document.getElementById('home')?.addEventListener('click', goHome);
+document.getElementById('retry')?.addEventListener('click', retry);
+
+// Keyboard shortcuts: Enter/Esc to return home
+document.addEventListener('keydown', (e) => {
+  if (e.key === 'Enter' || e.key === 'Escape' || e.keyCode === 27 || e.which === 27) {
+    e.preventDefault();
+    goHome();
+  }
+});
+
+// Visual countdown timer
+let secs = 10 * 60;
+const el = document.getElementById('count');
+const tick = () => {
+  if (!el) return;
+  const m = String(Math.floor(secs / 60)).padStart(2, '0');
+  const s = String(secs % 60).padStart(2, '0');
+  el.textContent = `${m}:${s}`;
+  secs = Math.max(0, secs - 1);
+};
+tick();
+setInterval(tick, 1000);
+
+// Disclaimer animation
+document.addEventListener('DOMContentLoaded', function() {
+  const initialDisclaimer = document.getElementById('initial-disclaimer');
+  const bottomDisclaimer = document.getElementById('bottom-disclaimer');
+  
+  setTimeout(() => {
+    initialDisclaimer.style.transition = 'opacity 0.5s ease-out';
+    initialDisclaimer.style.opacity = '0';
+    
+    setTimeout(() => {
+      initialDisclaimer.remove();
+      
+      setTimeout(() => {
+        bottomDisclaimer.style.opacity = '1';
+      }, 100);
+    }, 500);
+  }, 1500);
+});
+ 
+  </script>
 </body>
 </html>
+
